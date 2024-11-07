@@ -2,6 +2,15 @@
 
 ## Tech Stack
 
-1. Front-End -> React - Tailwind
-2. Back-End -> Node and Express
-3. DataBase -> MongoDB
+1. Front-End:
+     React
+     Redux for State Management
+     Headless UI
+     Tailwind Css
+
+2. Back-End:
+    Node JS
+    Express JS
+
+3. DataBase:
+     MongoDB
