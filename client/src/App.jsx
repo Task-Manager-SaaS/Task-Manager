@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { React } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import {Toaster} from "sonner";
@@ -49,7 +50,7 @@ function App() {
           <Route path="/task/:id >" element={<TaskDetails />} />
         </Route>
 
-        <Route path="/log-in" element={<Login />} />
+        <Route path="/log-in" element={<Login/>} />
       </Routes>
       <Toaster richColors />
     </main>
