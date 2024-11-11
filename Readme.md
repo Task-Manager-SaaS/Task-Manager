@@ -90,7 +90,11 @@ In a dynamic work environment, effective task management is crucial for team suc
 First, create the environment variables file `.env` in the server folder. The `.env` file contains the following environment variables:
 
 - MONGODB_URI = `your MongoDB URL`
-- JWT_SECRET = `any secret key - must be secured`
+- ACCESS_TOKEN_SECRET = `Access token secret`
+- ACCESS_TOKEN_EXPIRY = `It ususally requires short period of time varied from 15min to 2 day`
+- REFRESH_TOKEN_SECRET = `Refresh token secret`
+- REFRESH_TOKEN_EXPIRY = `It usually requires long period of time varied from 5 to 10 days`
+- CORS_ORIGIN = \*
 - PORT = `8000` or any port number
 
 &nbsp;
