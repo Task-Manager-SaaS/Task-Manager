@@ -3,27 +3,44 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js"
 
-export const verifyJwt = asyncHandler(async(req, _, next) => {
+ const verifyJwt = asyncHandler(async(req, _, next) => {
     try {
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
 
         console.log(token);
-        if (!token) {
-            throw new ApiError(401, "Unauthorized request")
+
+        if (token) {
+            const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            const resp = await User.findById(decodedToken.userId).select("-password -refreshToken isAdmin email");
+
+            if (!resp) {
+                throw new ApiError(401, "User not found. Try login again.")
+            }
+
+            req.user = {
+                email: resp.email,
+                isAdmin: resp.isAdmin,
+                userId: decodedToken.userId,
+            };
+
+            next();
+        } else {
+            throw new ApiError(401, "Not authorized. Try login again.");
         }
-
-        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-
-        const user = User.findById(decodedToken?._id).select("-password -refreshToken");
-
-        if (!user) {
-            throw new ApiError(401, "Invalid Access Token")
-        }
-
-        req.user = user;
-        next();
-
+        
     } catch (error) {
-        throw new ApiError(401, error?.message || "Invalid Access Token");
+        throw new ApiError(401, error?.message || "Not authorized. Try login again.");
     }
-})
+});
+
+const isAdminRoute = (req, _, next) => {
+    if (req.user && req.user.isAdmin) {
+        next();
+        
+    } else {
+        throw new ApiError(401, "Not authorized as admin. Try login as admin.")
+    };
+};
+
+
+export { verifyJwt, isAdminRoute };
