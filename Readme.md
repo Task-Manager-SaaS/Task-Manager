@@ -94,6 +94,12 @@ First, create the environment variables file `.env` in the server folder. The `.
 - ACCESS_TOKEN_EXPIRY = `It ususally requires short period of time varied from 15min to 2 day`
 - REFRESH_TOKEN_SECRET = `Refresh token secret`
 - REFRESH_TOKEN_EXPIRY = `It usually requires long period of time varied from 5 to 10 days`
+
+For Image and other file upload, Go to Cloudinary - https://cloudinary.com
+
+- CLOUDINARY_CLOUD_NAME = `Your Cloudinary Cloud Name`
+- CLOUDINARY_API_NAME = `Cloudinary Api Name`
+- CLOUDINARY_API_SECRET = `Cloudinary Api Keys`
 - CORS_ORIGIN = \*
 - PORT = `8000` or any port number
 
