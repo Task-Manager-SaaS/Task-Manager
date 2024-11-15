@@ -42,6 +42,7 @@ const Login = () => {
   return (
     <div className="w-full min-h-screen flex items-center flex-col lg:flex-row bg-[#f3f4f6]">
       <div className="w-full md:w-auto flex gap-0 md:gap-40 flex-col md:flex-row items-center justify-center">
+        {/* Left side */}
         <div className="h-full w-full lg:w-2/3 flex flex-col items-center justify-center">
           <div className="w-full md:max-w-lg 2xl:max-w-3xl flex flex-col items-center gap-5 md:gap-y-10 2xl:-mt-20">
             <span className="flex gap-1 py-1 px-3 border rounded-full text-sm md:text-base border-gray-300 text-gray-600">
@@ -53,7 +54,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-
+        {/* Right side */}
         <div className="w-full md:w-1/3 p-4 md:p-1 flex flex-col justify-center items-center">
           <form onSubmit={handleSubmit(submitHandler)} className="form-container w-full md:w-[400px] flex flex-col gap-y-8 bg-white px-10 pt-14 pb-14">
             <div>
@@ -61,10 +62,28 @@ const Login = () => {
               <span className="block mt-2 text-center text-base text-blue-500">Keep all your credentials safe</span>
             </div>
             <div className="flex flex-col gap-y-5">
-              <Textbox placeholder="email@example.com" type="email" name="email" label="Email Address" register={register("email", { required: "Email Address is required!" })} errors={errors.email ? errors.email.message : ""} />
-              <Textbox placeholder="your password" type="password" name="password" label="Password" register={register("password", { required: "Password is required!" })} errors={errors.password ? errors.password.message : ""} />
+              <Textbox 
+                placeholder="email@example.com" 
+                type="email" 
+                name="email" 
+                label="Email Address" 
+                register={register("email", { required: "Email Address is required!" })} 
+                errors={errors.email ? errors.email.message : ""} 
+              />
+              <Textbox 
+                placeholder="your password" 
+                type="password" 
+                name="password" 
+                label="Password" 
+                register={register("password", { required: "Password is required!" })} 
+                errors={errors.password ? errors.password.message : ""} 
+              />
               {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-              <Button type="submit" label={"Submit"} className="w-full h-10 bg-purple-700 text-white rounded-full transition duration-300 ease-in-out hover:bg-purple-800 hover:shadow-lg" />
+              <Button 
+                type="submit" 
+                label="Submit" 
+                className="w-full h-10 bg-purple-700 text-white rounded-full transition duration-300 ease-in-out hover:bg-purple-800 hover:shadow-lg" 
+              />
             </div>
           </form>
         </div>
