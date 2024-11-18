@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "password": "password123"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Sample Task 1",
+      "description": "This is a sample task.",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Sample Task 2",
+      "description": "This is another sample task.",
+      "completed": true
+    },
+    {
+      "id": "8e77",
+      "title": "My first Task",
+      "description": "This is the first Task"
+    }
+  ]
+}
